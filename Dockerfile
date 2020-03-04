@@ -10,11 +10,9 @@ RUN dotnet restore api/api.csproj
 COPY /tests/tests.csproj ./tests/
 RUN dotnet restore tests/tests.csproj
 
-RUN ls -laR
-
 #COPY src
 COPY . .
-
+ENV TEAMCITY_PROJECT_NAME=fake
 RUN dotnet test tests/tests.csproj
 
 # publish
